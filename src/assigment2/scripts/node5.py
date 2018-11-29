@@ -4,7 +4,6 @@ from sensor_msgs.msg import Image
 import cv2
 import sys
 import os
-import random
 from sensor_msgs.msg import Image, LaserScan, CameraInfo
 import random
 from std_msgs.msg import Bool, Int32, Float32
@@ -42,7 +41,6 @@ def rotate(angle):
         	current_angle = angular_speed*(t1-t0)
         vel_msg.angular.z = 0
         velocity_publisher.publish(vel_msg)
-
 
 def move_forward():
 	data=rospy.wait_for_message("/scan", LaserScan)
@@ -85,7 +83,7 @@ def move ():
 		print "len="+str(len)
 		moved = move_forward()
 		if(moved ==False):
-		    rotate(random.uniform( 20, 50 ))
+		    rotate(40)
 		len=find_object(r,g,b)
 
 if __name__ == '__main__':
